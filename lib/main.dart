@@ -1,9 +1,29 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
       home: Scaffold(
+    appBar: AppBar(actions: [
+      IconButton(
+        icon: Icon(Icons.home),
+        onPressed: () {
+          print('Home button is pressed');
+        },
+      ),
+      IconButton(
+        icon: Icon(Icons.play_arrow),
+        onPressed: () {
+          print('Play button is pressed');
+        },
+      ),
+    ], centerTitle: false, title: Text('This is App Bar')),
     body: TestWidget(),
+    floatingActionButton: FloatingActionButton(
+      child: Icon(Icons.bug_report),
+      onPressed: () {
+        print('Tab! FAB!');
+      },
+    ),
   )));
 }
 
