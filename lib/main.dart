@@ -21,12 +21,10 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: double.infinity,
-      width: double.infinity,
-      color: Colors.yellow,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center, // 상하 정렬
-        crossAxisAlignment: CrossAxisAlignment.start, // 좌우 정렬
+      height: double.infinity, // 높이를 최대로 설정
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center, // 가로로 중앙에 배치
+        crossAxisAlignment: CrossAxisAlignment.center, // 세로로 중앙에 배치
         children: [
           Container(width: 100, height: 80, color: Colors.red, child: Text('Container 1')),
           Container(width: 100, height: 80, color: Colors.green, child: Text('Container 2')),
