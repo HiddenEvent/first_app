@@ -5,44 +5,33 @@ void main() {
     MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Study to Container'),
+          title: Text('Widget을 상하로 배치하기'),
         ),
-        body: CustomContainer(),
+        body: Body(),
       ),
     ),
   );
 }
 
-class CustomContainer extends StatelessWidget {
-  const CustomContainer({
+class Body extends StatelessWidget {
+  const Body({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        // width: double.infinity, // 좌우 꽉 차게
-        // height: double.infinity, // 상하 꽉 차게
-        width: 300,
-        height: 300,
-        // padding: EdgeInsets.fromLTRB(10, 12, 10, 12),
-        // margin: EdgeInsets.symmetric(vertical: 24, horizontal: 30),
-        decoration: BoxDecoration(
-          color: Color(0xFF7DCE76),
-          border: Border.all(color: Colors.red, width: 5, style: BorderStyle.solid),
-          borderRadius: BorderRadius.circular(100),
-          boxShadow: [
-            BoxShadow(color: Colors.black.withOpacity(0.3), offset: Offset(10, 10), blurRadius: 10, spreadRadius: 1),
-            BoxShadow(color: Colors.blue.withOpacity(0.3), offset: Offset(10, 10), blurRadius: 10, spreadRadius: 1),
-          ],
-        ),
-        child: Center(
-          child: Container(
-            color: Colors.yellow,
-            child: Text('Hello Container'),
-          ),
-        ),
+    return Container(
+      height: double.infinity,
+      width: double.infinity,
+      color: Colors.yellow,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center, // 상하 정렬
+        crossAxisAlignment: CrossAxisAlignment.start, // 좌우 정렬
+        children: [
+          Container(width: 100, height: 80, color: Colors.red, child: Text('Container 1')),
+          Container(width: 100, height: 80, color: Colors.green, child: Text('Container 2')),
+          Container(width: 100, height: 80, color: Colors.blue, child: Text('Container 3')),
+        ],
       ),
     );
   }
