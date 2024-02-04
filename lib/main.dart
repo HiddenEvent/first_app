@@ -20,16 +20,20 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
-        Container(width: double.infinity, height: 200, color: Colors.red),
-        Expanded(child: Container(color: Colors.blue, height: 100)),
-        Flexible(child: Container(color: Colors.red, height: 100)),
-
-        // Flexible(flex: 1, child: Container(color: Colors.red)),
-        // Flexible(flex: 2, child: Container(color: Colors.blue)),
-        // Flexible(flex: 3, child: Container(color: Colors.green)),
-        // Flexible(flex: 4, child: Container(color: Colors.yellow)),
+        Container(width: 500, height: 500, color: Colors.black),
+        Container(width: 400, height: 400, color: Colors.red),
+        Container(width: 300, height: 300, color: Colors.green),
+        Positioned(
+          bottom: 50,
+          right: 30,
+          child: Container(
+            width: 200,
+            height: 200,
+            color: Colors.blue,
+          ),
+        )
       ],
     );
   }
