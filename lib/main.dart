@@ -88,6 +88,7 @@ class _TestRadioButtonState extends State<TestRadioButton> {
             groupValue: selectValue,
             onChanged: (value) => setState(() => selectValue = value!),
           ),
+          onTap: () => setState(() => selectValue = TestRadioValue.test1),
         ),
         ListTile(
           title: const Text('test2'),
@@ -96,6 +97,7 @@ class _TestRadioButtonState extends State<TestRadioButton> {
             groupValue: selectValue,
             onChanged: (value) => setState(() => selectValue = value!),
           ),
+          onTap: () => setState(() => selectValue = TestRadioValue.test2),
         ),
         ListTile(
           title: const Text('test3'),
@@ -104,6 +106,7 @@ class _TestRadioButtonState extends State<TestRadioButton> {
             groupValue: selectValue,
             onChanged: (value) => setState(() => selectValue = value!),
           ),
+          onTap: () => setState(() => selectValue = TestRadioValue.test3),
         ),
       ],
     );
