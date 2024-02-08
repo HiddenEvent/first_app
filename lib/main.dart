@@ -1,3 +1,4 @@
+import 'package:english_words/english_words.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -5,7 +6,7 @@ void main() {
   runApp(
     MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text('CallBack Example')),
+        appBar: AppBar(title: const Text('외부라이브러리 사용하기')),
         body: const Body(),
       ),
     ),
@@ -19,64 +20,29 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TestWidget();
+    return RandomWords();
   }
 }
 
-class TestWidget extends StatefulWidget {
-  const TestWidget({super.key});
+class RandomWords extends StatefulWidget {
+  const RandomWords({super.key});
 
   @override
-  State<TestWidget> createState() => _TestWidgetState();
+  State<RandomWords> createState() => _RandomWordsState();
 }
 
-class _TestWidgetState extends State<TestWidget> {
-  int value = 0;
-
+class _RandomWordsState extends State<RandomWords> {
   @override
   Widget build(BuildContext context) {
+    final wordList = generateWordPairs().take(5).toList();
+    final widgets = wordList
+        .map(
+          (word) => Text(word.asCamelCase, style: const TextStyle(fontSize: 30)),
+        )
+        .toList();
+
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text('Count : $value', style: const TextStyle(fontSize: 30)),
-        TestButton(addCounter),
-      ],
-    );
-  }
-
-  void addCounter(int addValue) => setState(() => value += addValue);
-}
-
-class TestButton extends StatelessWidget {
-  final Function(int) callback;
-
-  const TestButton(this.callback, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      child: GestureDetector(
-        onTap: () {
-          callback.call(1);
-        },
-        onDoubleTap: () => callback.call(5),
-        onLongPress: () => callback.call(10),
-        child: Center(
-          child: Container(
-            margin: const EdgeInsets.all(10),
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: Colors.blue,
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-            ),
-            child: Text(
-              'Up counter',
-              style: TextStyle(fontSize: 20),
-            ),
-          ),
-        ),
-      ),
+      children: widgets,
     );
   }
 }
