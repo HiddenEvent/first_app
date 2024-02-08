@@ -44,13 +44,11 @@ class _TestWidgetState extends State<TestWidget> {
     );
   }
 
-  void addCounter() {
-    setState(() => ++value);
-  }
+  void addCounter(int addValue) => setState(() => value += addValue);
 }
 
 class TestButton extends StatelessWidget {
-  final VoidCallback callback;
+  final Function(int) callback;
 
   const TestButton(this.callback, {super.key});
 
@@ -60,8 +58,10 @@ class TestButton extends StatelessWidget {
       width: double.infinity,
       child: GestureDetector(
         onTap: () {
-          callback.call();
+          callback.call(1);
         },
+        onDoubleTap: () => callback.call(5),
+        onLongPress: () => callback.call(10),
         child: Center(
           child: Container(
             margin: const EdgeInsets.all(10),
