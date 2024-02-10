@@ -1,18 +1,10 @@
-import 'package:english_words/english_words.dart';
 import 'package:first_app/screen/new_page.dart';
+import 'package:first_app/style/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 const assetImagePath = 'assets/images/';
 const bannerImage = '${assetImagePath}illustrator-basic-20-overview.webp';
-
-final customTheme = ThemeData(
-  colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
-  textTheme: const TextTheme(
-    bodyMedium: TextStyle(fontWeight: FontWeight.normal, fontSize: 30, color: Colors.black),
-  ),
-  useMaterial3: false,
-);
 
 void main() {
   runApp(
