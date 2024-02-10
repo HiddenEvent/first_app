@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const InstaCloneApp());
@@ -10,7 +11,13 @@ class InstaCloneApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: InstaCloneHome(),
+      theme: ThemeData(
+        colorScheme: const ColorScheme.light(
+          primary: Colors.white,
+          secondary: Colors.black,
+        ),
+      ),
+      home: const InstaCloneHome(),
     );
   }
 }
@@ -20,6 +27,11 @@ class InstaCloneHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Instagram', style: GoogleFonts.lobsterTwo(color: Colors.black, fontSize: 32)),
+        centerTitle: false,
+      ),
+    );
   }
 }
