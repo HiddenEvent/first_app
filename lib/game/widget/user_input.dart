@@ -4,13 +4,20 @@ import 'package:flutter/material.dart';
 
 class UserInput extends StatelessWidget {
   final bool isDone;
+  final InputType? userInput;
   final Function(InputType) callback;
-  const UserInput({super.key, required this.isDone, required this.callback});
+  const UserInput({super.key, required this.isDone, required this.userInput, required this.callback});
 
   @override
   Widget build(BuildContext context) {
     if (isDone) {
-      return Placeholder();
+      return Row(
+        children: [
+          Expanded(child: SizedBox.shrink()),
+          InputCard(child: Image.asset(userInput!.path)),
+          Expanded(child: SizedBox.shrink()),
+        ],
+      );
     }
     return Row(
       children: _getInputs(callback),
