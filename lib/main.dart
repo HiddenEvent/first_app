@@ -6,6 +6,14 @@ import 'package:go_router/go_router.dart';
 const assetImagePath = 'assets/images/';
 const bannerImage = '${assetImagePath}illustrator-basic-20-overview.webp';
 
+final customTheme = ThemeData(
+  colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
+  textTheme: const TextTheme(
+    bodyMedium: TextStyle(fontWeight: FontWeight.normal, fontSize: 30, color: Colors.black),
+  ),
+  useMaterial3: false,
+);
+
 void main() {
   runApp(
     MaterialApp.router(
@@ -16,10 +24,7 @@ void main() {
           GoRoute(path: '/new2', name: 'new2', builder: (context, _) => const NewPage2()),
         ],
       ),
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
-        useMaterial3: false,
-      ),
+      theme: customTheme,
     ),
   );
 }
@@ -29,11 +34,13 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = customTheme.textTheme;
+
     return Scaffold(
         appBar: AppBar(title: const Text('화면 이동하기')),
         body: Center(
           child: TextButton(
-            child: const Text('Go to page'),
+            child: Text('Go to page', style: textTheme.bodyMedium),
             onPressed: () {
               context.pushNamed('new');
             },
