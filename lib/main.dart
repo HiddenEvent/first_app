@@ -9,13 +9,24 @@ const bannerImage = '${assetImagePath}illustrator-basic-20-overview.webp';
 void main() {
   runApp(
     MaterialApp.router(
-        routerConfig: GoRouter(
-      routes: [
-        GoRoute(path: '/', name: 'home', builder: (context, _) => const Home()),
-        GoRoute(path: '/new', name: 'new', builder: (context, _) => const NewPage()),
-        GoRoute(path: '/new2', name: 'new2', builder: (context, _) => const NewPage2()),
-      ],
-    )),
+      routerConfig: GoRouter(
+        routes: [
+          GoRoute(path: '/', name: 'home', builder: (context, _) => const Home()),
+          GoRoute(path: '/new', name: 'new', builder: (context, _) => const NewPage()),
+          GoRoute(path: '/new2', name: 'new2', builder: (context, _) => const NewPage2()),
+        ],
+      ),
+      theme: ThemeData(
+        colorScheme: const ColorScheme.dark(
+          primary: Colors.indigo,
+          secondary: Colors.green,
+          tertiary: Colors.orange,
+        ),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.red,
+        ),
+      ),
+    ),
   );
 }
 
