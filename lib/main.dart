@@ -17,14 +17,8 @@ void main() {
         ],
       ),
       theme: ThemeData(
-        colorScheme: const ColorScheme.dark(
-          primary: Colors.indigo,
-          secondary: Colors.green,
-          tertiary: Colors.orange,
-        ),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.red,
-        ),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
+        useMaterial3: false,
       ),
     ),
   );
