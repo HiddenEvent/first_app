@@ -30,7 +30,7 @@ class _GameBodyState extends State<GameBody> {
     return Column(
       children: [
         Expanded(child: CpuInput(isDone: isDone, cpuInput: _cpuInput)),
-        Expanded(child: GameResult(isDone: isDone)),
+        Expanded(child: GameResult(isDone: isDone, result: getResult(), callBack: reset)),
         Expanded(child: UserInput(isDone: isDone, callback: setUserInput, userInput: _userInput)),
       ],
     );
@@ -46,5 +46,39 @@ class _GameBodyState extends State<GameBody> {
   void setCpuInput() {
     final random = Random();
     _cpuInput = InputType.values[random.nextInt(3)];
+  }
+
+  GameResultType? getResult() {
+    if (_userInput == null) return null;
+    switch (_userInput!) {
+      case InputType.rock:
+        return _cpuInput == InputType.scissors
+            ? GameResultType.playerWin
+            : _cpuInput == InputType.rock
+                ? GameResultType.draw
+                : GameResultType.cpuWin;
+
+      case InputType.scissors:
+        return _cpuInput == InputType.paper
+            ? GameResultType.playerWin
+            : _cpuInput == InputType.scissors
+                ? GameResultType.draw
+                : GameResultType.cpuWin;
+
+      case InputType.paper:
+        return _cpuInput == InputType.rock
+            ? GameResultType.playerWin
+            : _cpuInput == InputType.paper
+                ? GameResultType.draw
+                : GameResultType.cpuWin;
+    }
+  }
+
+  void reset() {
+    setState(() {
+      isDone = false;
+      _userInput = null;
+      setCpuInput();
+    });
   }
 }
