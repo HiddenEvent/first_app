@@ -41,7 +41,6 @@ class _InstaCloneHomeState extends State<InstaCloneHome> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     index = 0;
   }
@@ -67,7 +66,7 @@ class _InstaCloneHomeState extends State<InstaCloneHome> {
           ),
         ],
       ),
-      body: const InstaBody(),
+      body: InstaBody(index: index),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: index,
         onTap: (newIndex) => setState(() => index = newIndex),
