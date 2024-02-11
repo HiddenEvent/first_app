@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -31,6 +32,20 @@ class InstaCloneHome extends StatelessWidget {
       appBar: AppBar(
         title: Text('Instagram', style: GoogleFonts.lobsterTwo(color: Colors.black, fontSize: 32)),
         centerTitle: false,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.favorite_outline, size: 32),
+            onPressed: () {
+              print('Tab favorite');
+            },
+          ),
+          IconButton(
+            icon: Icon(CupertinoIcons.paperplane, size: 32),
+            onPressed: () {
+              print('Tab paperplane');
+            },
+          ),
+        ],
       ),
     );
   }
