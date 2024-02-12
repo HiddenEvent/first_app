@@ -5,8 +5,31 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Icon(Icons.home, size: 100),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          StoryArea(),
+          FeedList(),
+        ],
+      ),
     );
+  }
+}
+
+class StoryArea extends StatelessWidget {
+  const StoryArea({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
+
+class FeedList extends StatelessWidget {
+  const FeedList({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }
